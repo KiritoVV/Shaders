@@ -15,6 +15,7 @@ public class CustomPostProcessRenderFeature : ScriptableRendererFeature
     private Material m_compositeMaterial;
 
     private CustomPostProcessPass m_customPass;
+    private CustomPostProcessPass m_pass;
     public override void AddRenderPasses(ScriptableRenderer renderer, ref RenderingData renderingData)
     {
         renderer.EnqueuePass(m_customPass);
@@ -39,7 +40,7 @@ public class CustomPostProcessRenderFeature : ScriptableRendererFeature
         if (renderingData.cameraData.cameraType == CameraType.Game)
         {
             m_pass.ConfigureInput(ScriptableRenderPassInput.Depth);
-            m_Pass.ConfigureInput(ScriptableRenderPassInput.Color);
+            m_pass.ConfigureInput(ScriptableRenderPassInput.Color);
             m_pass.SetTarget(renderer.cameraColorTargetHandle, renderer.cameraDepthTargetHandle);
         }
     }
